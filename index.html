@@ -255,6 +255,37 @@
       line-height: 2;
     }
 
+    /* ── Donation ── */
+    .donation-section {
+      text-align: center;
+      border-top: 1px solid var(--color-line);
+      padding: 80px 24px;
+    }
+
+    .donation-text {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      letter-spacing: 0.04em;
+      line-height: 2;
+    }
+
+    .donation-link {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 36px;
+      border: 1px solid var(--color-accent);
+      color: var(--color-accent);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .donation-link:hover {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
     /* ── Footer ── */
     footer {
       text-align: center;
@@ -359,6 +390,15 @@
       毎週土曜日の朝だけオープンする小さなコーヒーの場所です。<br>
       料金は一切いただきません。ただ、ゆっくりしてください。
     </p>
+  </section>
+
+  <!-- Donation -->
+  <section class="donation-section">
+    <p class="section-label">Support</p>
+    <div class="divider"></div>
+    <p class="donation-text">このお店は皆さんの寄付で成り立っています。</p>
+    <p class="donation-text">コーヒー豆をいただければ、私が町の人にシェアしますね！</p>
+    <a class="donation-link" href="https://www.amazon.jp/hz/wishlist/ls/1NUWRNMVYVIVG?ref_=wl_share" target="_blank" rel="noopener noreferrer">Amazonほしい物リストを見る</a>
   </section>
 
   <!-- Footer -->
