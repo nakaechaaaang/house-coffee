@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOUSE COFFEE</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg: #faf8f5;
+      --color-text: #1a1a1a;
+      --color-muted: #7a7060;
+      --color-accent: #3b2a1a;
+      --color-line: #e0d8cc;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "ヒラギノ角ゴ ProN W3", sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100svh;
+      min-height: 500px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url("Espresso_Among_Roasted_Beans_original_332453.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.45);
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+
+    .hero:hover .hero__bg {
+      transform: scale(1.0);
+    }
+
+    .hero__content {
+      position: relative;
+      text-align: center;
+      color: #fff;
+      padding: 0 24px;
+    }
+
+    .hero__eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 20px;
+    }
+
+    .hero__title {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+
+    .hero__sub {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 8px;
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.45);
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .hero__scroll::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.35);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%   { opacity: 0; transform: scaleY(0); transform-origin: top; }
+      50%  { opacity: 1; transform: scaleY(1); transform-origin: top; }
+      100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+    }
+
+    /* ── Section base ── */
+    section {
+      padding: 96px 24px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 32px;
+    }
+
+    .divider {
+      width: 32px;
+      height: 1px;
+      background: var(--color-accent);
+      margin: 0 auto 32px;
+    }
+
+    /* ── Welcome ── */
+    .welcome {
+      text-align: center;
+    }
+
+    .welcome__heading {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      margin-bottom: 24px;
+      color: var(--color-accent);
+    }
+
+    .welcome__body {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      letter-spacing: 0.04em;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── Image strip ── */
+    .image-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 0 24px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .image-strip__item {
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .image-strip__item:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/7;
+    }
+
+    .image-strip__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+      filter: brightness(0.92);
+    }
+
+    .image-strip__item:hover img {
+      transform: scale(1.04);
+      filter: brightness(1);
+    }
+
+    /* ── Info ── */
+    .info {
+      text-align: center;
+      border-top: 1px solid var(--color-line);
+      border-bottom: 1px solid var(--color-line);
+      padding: 80px 24px;
+    }
+
+    .info__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 48px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .info__item-label {
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 12px;
+    }
+
+    .info__item-value {
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--color-accent);
+    }
+
+    .info__item-value .free {
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Message ── */
+    .message-section {
+      text-align: center;
+    }
+
+    .message-section__quote {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      line-height: 2;
+      color: var(--color-accent);
+      margin-bottom: 24px;
+    }
+
+    .message-section__body {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      letter-spacing: 0.04em;
+      max-width: 440px;
+      margin: 0 auto;
+      line-height: 2;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 48px 24px;
+      border-top: 1px solid var(--color-line);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--color-muted);
+    }
+
+    footer .footer-name {
+      font-size: 14px;
+      letter-spacing: 0.4em;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .image-strip {
+        grid-template-columns: 1fr;
+        padding: 0 16px 60px;
+      }
+
+      .image-strip__item:first-child {
+        aspect-ratio: 4/3;
+      }
+
+      section {
+        padding: 64px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">Every Saturday Morning</p>
+      <h1 class="hero__title">HOUSE<br>COFFEE</h1>
+      <p class="hero__sub">7:00 — 9:00 &nbsp;|&nbsp; Free</p>
+    </div>
+    <div class="hero__scroll">scroll</div>
+  </header>
+
+  <!-- Welcome message -->
+  <section class="welcome">
+    <p class="section-label">Welcome</p>
+    <div class="divider"></div>
+    <h2 class="welcome__heading">1週間、お疲れ様でした。</h2>
+    <p class="welcome__body">
+      毎週土曜日の朝、ゆっくりコーヒーを飲みながら<br>
+      ひと息ついてください。<br>
+      あなたが来てくれるのを待っています。
+    </p>
+  </section>
+
+  <!-- Image strip -->
+  <div class="image-strip">
+    <div class="image-strip__item">
+      <img src="Pile_Of_Coffee_Beans_original_592847.jpg" alt="コーヒー豆" />
+    </div>
+    <div class="image-strip__item">
+      <img src="Roasted_Coffee_Beans_original_1198480.jpg" alt="ローストコーヒー豆" />
+    </div>
+    <div class="image-strip__item">
+      <img src="Roasted_Coffee_Beans_Close-Up_original_1165588.jpg" alt="コーヒー豆クローズアップ" />
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="info">
+    <p class="section-label" style="margin-bottom: 48px;">Hours &amp; Price</p>
+    <div class="info__grid">
+      <div>
+        <p class="info__item-label">Day</p>
+        <p class="info__item-value">毎週土曜日</p>
+      </div>
+      <div>
+        <p class="info__item-label">Open</p>
+        <p class="info__item-value">7:00 — 9:00</p>
+      </div>
+      <div>
+        <p class="info__item-label">Price</p>
+        <p class="info__item-value"><span class="free">無料</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message -->
+  <section class="message-section">
+    <p class="section-label">Our Story</p>
+    <div class="divider"></div>
+    <p class="message-section__quote">
+      「おいしいコーヒーと、<br>静かな朝を。」
+    </p>
+    <p class="message-section__body">
+      HOUSE COFFEEは、忙しい1週間を終えたあなたに<br>
+      ほっとできる時間と一杯のコーヒーをお届けするために<br>
+      毎週土曜日の朝だけオープンする小さなコーヒーの場所です。<br>
+      料金は一切いただきません。ただ、ゆっくりしてください。
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-name">HOUSE COFFEE</p>
+    <p>Every Saturday &nbsp; 7:00 – 9:00 &nbsp; Free</p>
+  </footer>
+
+</body>
+</html>
